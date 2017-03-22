@@ -1,0 +1,4 @@
+name: My Project Migrations
+migrations_namespace:  HelixMigrations
+table_name: migration_versions
+migrations_directory: versions
