@@ -13,6 +13,7 @@ include("elements/header.php");
 
         <thead>
         <tr>
+            <th></th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
@@ -32,7 +33,16 @@ include("elements/header.php");
         $employees = $pdo->query('SELECT * FROM employees ORDER BY id DESC');
         $myrow = $employees->fetchAll();
         $i = 0;
-        if ($myrow) {
+        if ($myrow) { ?>
+            <br>
+            <br>
+        <form id="empolyees-delete-form" class="label-placeholder" action="delete-employees.php" method="POST" >
+            <div class="form-group">
+                <input type="submit" class="btn btn-alter btn-border btn-border-brown"
+                       id="submit-employees" value="Delete Selected">
+            </div>
+            <br>
+            <?php
             do {
                 $id = $myrow[$i]['id'];
                 printf("<tr>
@@ -47,7 +57,9 @@ include("elements/header.php");
                                                 <td>%s</td>
                                                 <td>%s</td>
                                                 <td>%s</td>
+                                                <td>%s</td>
                                                 </tr>",
+                    "<input type='checkbox' name='employee-$id' value='$id'>",
                     $myrow[$i]["firstName"] ? $myrow[$i]["firstName"] : 'No Data',
                     $myrow[$i]["lastName"] ? $myrow[$i]["lastName"] : 'No Data',
                     $myrow[$i]["age"] ? $myrow[$i]["age"] : 'No Data',
@@ -61,7 +73,9 @@ include("elements/header.php");
                     "<a href='delete-employee.php?id=$id'>Delete</a>");
                 $i += 1;
             } while ($i < count($myrow));
-        } ?>
+        ?>
+            </form>
+            <?php } ?>
         </tbody>
     </table>
 
