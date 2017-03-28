@@ -8,7 +8,8 @@
 include("elements/db.php");
 include("elements/header.php");
 ?>
-    <table width="100%">
+<a href="add-employee-form.php">Add Employee</a>
+    <table>
 
         <thead>
         <tr>
@@ -28,7 +29,7 @@ include("elements/header.php");
 
         <tbody>
         <?php
-        $employees = $pdo->query('SELECT * FROM employees');
+        $employees = $pdo->query('SELECT * FROM employees ORDER BY id DESC');
         $myrow = $employees->fetchAll();
         $i = 0;
         if ($myrow) {
@@ -57,7 +58,7 @@ include("elements/header.php");
                     $myrow[$i]["creditCardNumber"] ? $myrow[$i]["creditCardNumber"] : 'No Data',
                     "<a href='employee.php?id=$id'>View</a>",
                     "<a href='edit-employee-form.php?id=$id'>Edit</a>",
-                    "<a href='delete-user.php?id=$id'>Delete</a>");
+                    "<a href='delete-employee.php?id=$id'>Delete</a>");
                 $i += 1;
             } while ($i < count($myrow));
         } ?>
