@@ -8,7 +8,7 @@
 include("elements/db.php");
 include("elements/header.php");
 ?>
-<a href="add-employee-form.php">Add Employee</a>
+    <a href="add-employee-form.php">Add Employee</a>
     <table>
 
         <thead>
@@ -36,16 +36,16 @@ include("elements/header.php");
         if ($myrow) { ?>
             <br>
             <br>
-        <form id="empolyees-delete-form" class="label-placeholder" action="delete-employees.php" method="POST" >
-            <div class="form-group">
-                <input type="submit" class="btn btn-alter btn-border btn-border-brown"
-                       id="submit-employees" value="Delete Selected">
-            </div>
-            <br>
-            <?php
-            do {
-                $id = $myrow[$i]['id'];
-                printf("<tr>
+            <form id="empolyees-delete-form" class="label-placeholder" action="delete-employees.php" method="POST">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-alter btn-border btn-border-brown"
+                           id="submit-employees" value="Delete Selected">
+                </div>
+                <br>
+                <?php
+                do {
+                    $id = $myrow[$i]['id'];
+                    printf("<tr>
                                                 <td>%s</td>
                                                 <td>%s</td>
                                                 <td>%s</td>
@@ -59,23 +59,23 @@ include("elements/header.php");
                                                 <td>%s</td>
                                                 <td>%s</td>
                                                 </tr>",
-                    "<input type='checkbox' name='employee-$id' value='$id'>",
-                    $myrow[$i]["firstName"] ? $myrow[$i]["firstName"] : 'No Data',
-                    $myrow[$i]["lastName"] ? $myrow[$i]["lastName"] : 'No Data',
-                    $myrow[$i]["age"] ? $myrow[$i]["age"] : 'No Data',
-                    $myrow[$i]["city"] ? $myrow[$i]["city"] : 'No Data',
-                    $myrow[$i]["email"] ? $myrow[$i]["email"] : 'No Data',
-                    $myrow[$i]["country"] ? $myrow[$i]["country"] : 'No Data',
-                    $myrow[$i]["bankAccountNumber"] ? $myrow[$i]["bankAccountNumber"] : 'No Data',
-                    $myrow[$i]["creditCardNumber"] ? $myrow[$i]["creditCardNumber"] : 'No Data',
-                    "<a href='employee.php?id=$id'>View</a>",
-                    "<a href='edit-employee-form.php?id=$id'>Edit</a>",
-                    "<a href='delete-employee.php?id=$id'>Delete</a>");
-                $i += 1;
-            } while ($i < count($myrow));
-        ?>
+                        "<input type='checkbox' name='employee-$id' value='$id'>",
+                        $myrow[$i]["firstName"] ? $myrow[$i]["firstName"] : 'No Data',
+                        $myrow[$i]["lastName"] ? $myrow[$i]["lastName"] : 'No Data',
+                        $myrow[$i]["age"] ? $myrow[$i]["age"] : 'No Data',
+                        $myrow[$i]["city"] ? $myrow[$i]["city"] : 'No Data',
+                        $myrow[$i]["email"] ? $myrow[$i]["email"] : 'No Data',
+                        $myrow[$i]["country"] ? $myrow[$i]["country"] : 'No Data',
+                        $myrow[$i]["bankAccountNumber"] ? $myrow[$i]["bankAccountNumber"] : 'No Data',
+                        $myrow[$i]["creditCardNumber"] ? $myrow[$i]["creditCardNumber"] : 'No Data',
+                        "<a href='employee.php?id=$id'>View</a>",
+                        "<a href='edit-employee-form.php?id=$id'>Edit</a>",
+                        "<a href='delete-employee.php?id=$id'>Delete</a>");
+                    $i += 1;
+                } while ($i < count($myrow));
+                ?>
             </form>
-            <?php } ?>
+        <?php } ?>
         </tbody>
     </table>
 

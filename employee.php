@@ -29,8 +29,8 @@ $myrow = $employees->fetch();
 $phones = explode("---", $myrow["phones"]);
 $addresses = explode("---", $myrow["addesses"]);
 ?>
-<!--Employee Table-->
-    <table >
+    <!--Employee Table-->
+    <table>
 
         <thead>
         <tr>
@@ -70,14 +70,14 @@ $addresses = explode("---", $myrow["addesses"]);
         } ?>
         </tbody>
     </table>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-<!--Phones Table Of Employee-->
-    <?php printf("<a href='add-phone-form.php?emp=$theId'>Add Phone</a>");  ?>
-    <table >
+    <!--Phones Table Of Employee-->
+<?php printf("<a href='add-phone-form.php?emp=$theId'>Add Phone</a>"); ?>
+    <table>
         <thead>
         <tr>
             <th>Phone</th>
@@ -91,7 +91,7 @@ $addresses = explode("---", $myrow["addesses"]);
         <?php
         $i = 0;
         do {
-            $phoneAndId =  explode("--", $phones[$i]);
+            $phoneAndId = explode("--", $phones[$i]);
             $pId = $phoneAndId[1];
             printf("<tr>
     <td>%s</td>
@@ -106,14 +106,14 @@ $addresses = explode("---", $myrow["addesses"]);
         ?>
         </tbody>
     </table>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-<!--Addresses Table Of Employee-->
-<?php printf("<a href='add-address-form.php?emp=$theId'>Add Address</a>");  ?>
-    <table >
+    <!--Addresses Table Of Employee-->
+<?php printf("<a href='add-address-form.php?emp=$theId'>Add Address</a>"); ?>
+    <table>
         <thead>
         <tr>
             <th>Address</th>
@@ -127,7 +127,7 @@ $addresses = explode("---", $myrow["addesses"]);
         <?php
         $i = 0;
         do {
-            $addressAndId =  explode("--", $addresses[$i]);
+            $addressAndId = explode("--", $addresses[$i]);
             $aId = $addressAndId[1];
             printf("<tr>
     <td>%s</td>
