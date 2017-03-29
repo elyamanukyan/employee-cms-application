@@ -9,7 +9,7 @@ include("elements/db.php");
 include("elements/header.php");
 $theId = $_GET['id'];
 
-$employees = $pdo->prepare("SELECT e.*, GROUP_CONCAT(DISTINCT  phone,'--',p.id ORDER BY p.id SEPARATOR '---') as phones, GROUP_CONCAT(DISTINCT address,'--',a.id ORDER BY a.id SEPARATOR '---') as addesses
+$employees = $pdo->prepare("SELECT e.*, GROUP_CONCAT(DISTINCT  phone,'--',p.id ORDER BY p.id SEPARATOR '---') as phones, GROUP_CONCAT(DISTINCT address,'--',a.id ORDER BY a.id SEPARATOR '---') as addresses
                                               FROM employees e
                                               LEFT  JOIN  phones p ON (e.id = p.emp_id)
                                               LEFT  JOIN  addresses a ON (e.id = a.emp_id)
@@ -19,7 +19,8 @@ $employees->execute(array($theId));
 $myrow = $employees->fetch();
 //echo '<pre>' . print_r($myrow, true) . '</pre>';
 $phones = explode("---", $myrow["phones"]);
-$addresses = explode("---", $myrow["addesses"]);
+//var_dump($myrow["phones"]);die;
+$addresses = explode("---", $myrow["addresses"]);
 ?>
     <!--Employee Table-->
     <table>
@@ -68,7 +69,8 @@ $addresses = explode("---", $myrow["addesses"]);
     <br>
 
     <!--Phones Table Of Employee-->
-<?php printf("<a href='add-phone-form.php?emp=$theId'>Add Phone</a>"); ?>
+<?php printf("<a href='add-phone-form.php?emp=$theId'>Add Phone</a>");
+if ($myrow["phones"] != NULL) { ?>
     <table>
         <thead>
         <tr>
@@ -98,13 +100,11 @@ $addresses = explode("---", $myrow["addesses"]);
         ?>
         </tbody>
     </table>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!--Addresses Table Of Employee-->
-<?php printf("<a href='add-address-form.php?emp=$theId'>Add Address</a>"); ?>
+<?php }
+printf("<br><br><br><a href='add-address-form.php?emp=$theId'>Add Address</a>");
+if ($myrow["addresses"] != NULL) { ?>
     <table>
         <thead>
         <tr>
@@ -136,5 +136,5 @@ $addresses = explode("---", $myrow["addesses"]);
     </table>
 
 
-<?php
+<?php }
 include("elements/footer.php");

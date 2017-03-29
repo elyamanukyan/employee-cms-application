@@ -6,18 +6,9 @@
  * Time: 6:09 PM
  */
 ?>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<!--</div>-->
+<!--</div>-->
+</div>
 <footer class="md-footer">
     <div class="container clearfix">
         <div class="grid_12">

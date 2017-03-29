@@ -31,5 +31,4 @@
     </div>
     </div>
     </header>
-<br>
-<br>
+<div class="container-fluid">
