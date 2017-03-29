@@ -8,25 +8,37 @@
 include("elements/db.php");
 include("elements/header.php");
 ?>
-    <a href="add-employee-form.php">Add Employee</a>
-    <table>
+    <a class="btn btn-success" href="add-employee-form.php">Add Employee</a>
+    <br>
+    <br>
+    <table id="employee-search" width="100%">
+        <td><input type="text" id="firstName" onkeyup="myFunctionFirstname()" placeholder="Search By First Name.."></td>
+        <td><input type="text" id="lastName" onkeyup="myFunctionLastname()" placeholder="Search By Last Name.."></td>
+        <td><input type="text" id="age" onkeyup="myFunctionAge()" placeholder="Search By Search by Age.."></td>
+        <td><input type="text" id="city" onkeyup="myFunctionCity()" placeholder="Search by City.."></td>
+        <td><input type="text" id="email" onkeyup="myFunctionEmail()" placeholder="Search by Email.."></td>
+        <td><input type="text" id="country" onkeyup="myFunctionCountry()" placeholder="Search By Country.."></td>
+        <td><input type="text" id="bankAccountNumber" onkeyup="myFunctionAccount()" placeholder="Search by Account..">
+        </td>
+        <td><input type="text" id="creditCardNumber" onkeyup="myFunctionCard()" placeholder="Search by Card.."></td>
 
+    </table>
+    <table class="table table-bordered" id="employee-table" width="100%">
         <thead>
         <tr>
-            <th></th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
-            <th>City</th>
-            <th>Email</th>
-            <th>Country</th>
-            <th>Bank Account Number</th>
-            <th>Credit Card Number</th>
-            <th></th>
-            <th>Options</th>
-            <th></th>
+            <th width="1%"></th>
+            <th width="8%">First Name</th>
+            <th width="8%">Last Name</th>
+            <th width="4%">Age</th>
+            <th width="12%">City</th>
+            <th width="12%">Email</th>
+            <th width="12%">Country</th>
+            <th width="10%">Bank Account Number</th>
+            <th width="10%">Credit Card Number</th>
+            <th width="23%">Options</th>
         </tr>
         </thead>
+
 
         <tbody>
         <?php
@@ -38,10 +50,11 @@ include("elements/header.php");
             <br>
             <form id="empolyees-delete-form" class="label-placeholder" action="delete-employees.php" method="POST">
                 <div class="form-group">
-                    <input type="submit" class="btn btn-alter btn-border btn-border-brown"
+                    <input type="submit" class="btn btn-alter btn-border btn-border-brown btn-danger"
                            id="submit-employees" value="Delete Selected">
                 </div>
                 <br>
+
                 <?php
                 do {
                     $id = $myrow[$i]['id'];
@@ -55,9 +68,7 @@ include("elements/header.php");
                                                 <td>%s</td>
                                                 <td>%s</td>
                                                 <td>%s</td>
-                                                <td>%s</td>
-                                                <td>%s</td>
-                                                <td>%s</td>
+                                                <td>%s%s%s</td>
                                                 </tr>",
                         "<input type='checkbox' name='employee-$id' value='$id'>",
                         $myrow[$i]["firstName"] ? $myrow[$i]["firstName"] : 'No Data',
@@ -68,9 +79,9 @@ include("elements/header.php");
                         $myrow[$i]["country"] ? $myrow[$i]["country"] : 'No Data',
                         $myrow[$i]["bankAccountNumber"] ? $myrow[$i]["bankAccountNumber"] : 'No Data',
                         $myrow[$i]["creditCardNumber"] ? $myrow[$i]["creditCardNumber"] : 'No Data',
-                        "<a href='employee.php?id=$id'>View</a>",
-                        "<a href='edit-employee-form.php?id=$id'>Edit</a>",
-                        "<a href='delete-employee.php?id=$id'>Delete</a>");
+                        "<a class='btn btn-info' style='margin-right:10px;' href='employee.php?id=$id'>View</a>",
+                        "<a class='btn btn-warning' style='margin-right:10px;' href='edit-employee-form.php?id=$id'>Edit</a>",
+                        "<a class='btn btn-danger' href='delete-employee.php?id=$id'>Delete</a>");
                     $i += 1;
                 } while ($i < count($myrow));
                 ?>
@@ -81,3 +92,4 @@ include("elements/header.php");
 
 <?php
 include("elements/footer.php");
+
