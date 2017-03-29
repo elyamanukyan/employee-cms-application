@@ -23,7 +23,7 @@ $phones = explode("---", $myrow["phones"]);
 $addresses = explode("---", $myrow["addresses"]);
 ?>
     <!--Employee Table-->
-    <table>
+    <table class="table table-bordered">
 
         <thead>
         <tr>
@@ -69,14 +69,13 @@ $addresses = explode("---", $myrow["addresses"]);
     <br>
 
     <!--Phones Table Of Employee-->
-<?php printf("<a href='add-phone-form.php?emp=$theId'>Add Phone</a>");
+<?php printf("<a class='btn btn-success' href='add-phone-form.php?emp=$theId'>Add Phone</a>");
 if ($myrow["phones"] != NULL) { ?>
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th>Phone</th>
             <th>Options</th>
-            <th></th>
         </tr>
         </thead>
 
@@ -89,12 +88,11 @@ if ($myrow["phones"] != NULL) { ?>
             $pId = $phoneAndId[1];
             printf("<tr>
     <td>%s</td>
-    <td>%s</td>
-    <td>%s</td>
+    <td>%s%s</td>
 </tr>",
                 $phoneAndId[0],
-                "<a href='edit-phone-form.php?id=$pId'>Edit</a>",
-                "<a href='delete-phone.php?id=$pId&eId=$theId'>Delete</a>");
+                "<a class='btn btn-warning' style='margin-right:20px;' href='edit-phone-form.php?id=$pId'>Edit</a>",
+                "<a class='btn btn-danger' href='delete-phone.php?id=$pId&eId=$theId'>Delete</a>");
             $i += 1;
         } while ($i < count($phones));
         ?>
@@ -103,14 +101,13 @@ if ($myrow["phones"] != NULL) { ?>
 
     <!--Addresses Table Of Employee-->
 <?php }
-printf("<br><br><br><a href='add-address-form.php?emp=$theId'>Add Address</a>");
+printf("<br><br><br><a class='btn btn-success' href='add-address-form.php?emp=$theId'>Add Address</a>");
 if ($myrow["addresses"] != NULL) { ?>
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th>Address</th>
             <th>Options</th>
-            <th></th>
         </tr>
         </thead>
 
@@ -123,12 +120,11 @@ if ($myrow["addresses"] != NULL) { ?>
             $aId = $addressAndId[1];
             printf("<tr>
     <td>%s</td>
-    <td>%s</td>
-    <td>%s</td>
+    <td>%s%s</td>
 </tr>",
                 $addressAndId[0],
-                "<a href='edit-address-form.php?id=$aId'>Edit</a>",
-                "<a href='delete-address.php?id=$aId&eId=$theId'>Delete</a>");
+                "<a class='btn btn-warning' style='margin-right:20px;' href='edit-address-form.php?id=$aId'>Edit</a>",
+                "<a class='btn btn-danger'  href='delete-address.php?id=$aId&eId=$theId'>Delete</a>");
             $i += 1;
         } while ($i < count($addresses));
         ?>
