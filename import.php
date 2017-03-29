@@ -27,7 +27,7 @@ foreach($dataArray as $data) {
     );
 
     if ($res->execute($params)) {
-        echo 'Employee Included';
+        echo 'Employee Included ';
         $last_id = $pdo->lastInsertId();
         foreach ($data['phones'] as $phone) {
             $queryPhone = "INSERT INTO phones (emp_id, phone) VALUES (:emp_id, :phone)";
@@ -37,7 +37,7 @@ foreach($dataArray as $data) {
                 ':phone' => $phone
             );
             $resPhone->execute($paramsPhone);
-            echo 'Phones Included';
+            echo 'Phones Included ';
         }
         foreach ($data['addresses'] as $address) {
             $queryAddr = "INSERT INTO addresses (emp_id, address) VALUES (:emp_id, :address)";
@@ -47,8 +47,9 @@ foreach($dataArray as $data) {
                 ':address' => $address
             );
             $resAddr->execute($paramsAddr);
-            echo 'Addresses Included';
+            echo 'Addresses Included ';
         }
+        header('Location: index.php');
     } else {
         echo 'Import Failed';
     }

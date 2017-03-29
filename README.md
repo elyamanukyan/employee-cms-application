@@ -10,6 +10,6 @@ Employee CMS Application
 <p>open git in folder "migrations" and run command "php doctrine-migrations.phar migrations:migrate" </p>
 
 <h1>Step4</h1>
-<p></p>
+<p>Open in the browser link "applicationName/import.php" </p>
 
 
